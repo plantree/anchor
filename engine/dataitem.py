@@ -6,66 +6,67 @@ abstract data model
 from typing import Dict 
 import json
 
-class Item(object):
+class DataItem(object):
     """
-    Base class for Item
+    Base class for DataItem
     """
-    def __init__(self, value=None):
+
+    def __init__(self, key, value=None):
+        self._name = key + "-dataitem"
+        self._key = key
         self._value = value
 
     def __repr__(self):
-        return self._value.__repr__()
+        return self._name
 
     def __str__(self):
-        return self._value.__repr__()
+        return self._name
+
+    def key(self):
+        return self._key
     
     def value(self):
         return self._value
     
     def set(self, value):
         self._value = value
-    
-    def toJSON(self):
-        return json.dumps(self)
 
-class DataItem(object):
+class DataModel(object):
     """
-    Base class for DataItem
+    Base class for DataModel
     """
-
     def __init__(self, name):
-        self._name = name + "-dataitem"
-        self._values = Dict(str, Item)
+        self._name = name + "-datamodel"
+        self._items = []
+        self._fields = []
     
     def __getitem__(self, key):
-        if key in self._values:
-            return self._values[key]
-        else:
-            return None
+        return self._items[self._fields.index(key)]
     
     def __setitem__(self, key, value):
-        self._values[key] = value
+        if key in self._fields:
+            self._items[self._fields.index(key)].set(value)
+        else:
+            raise KeyError(f"{self.__class__.__name__} does not support field: {key}")
     
     def __iter__(self):
-        return iter(self._values)
+        return iter(self._items)
     
     def __len__(self):
-        return len(self._values)
+        return len(self._items)
 
     def __repr__(self):
-        return self.name
+        return self._name
 
     def __str__(self):
-        return self.name
+        return self._name
     
-    def addItem(self, key, item):
-        self._values[key] = item.value()
-
+    def addDataItem(self, item):
+        self._items.append(item)
+        self._fields.append(item.key())
+    
     def keys(self):
-        return self._values.keys()
-    
-    def values(self):
-        return self._values.values()
+        return self._fields
 
-    def toJSON(self, *args, **kwargs):
-        return json.dumps(self._values, *args, **kwargs)
+    def to_data(self):
+        return [{item.key(): item.value()} for item in self._items]

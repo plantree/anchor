@@ -4,6 +4,8 @@ Task
 basic scheduling unit
 """
 from enum import Enum 
+from engine.logger import log
+from engine.ticker import Ticker
 
 class TaskStatus(Enum):
     """
@@ -13,8 +15,8 @@ class TaskStatus(Enum):
     REQUESTER = 1
     PROCESSOR = 2
     EXPORTER = 3
-    DONE = 3
-    FAILED = 4
+    DONE = 4
+    FAILED = 5
 
 class Task(object):
     """
@@ -26,6 +28,7 @@ class Task(object):
         self._processor = processor
         self._exporter = exporter
         self._status = TaskStatus.INIT
+        self._ticker = Ticker()
 
     def __repr__(self):
         return self._name
@@ -37,14 +40,24 @@ class Task(object):
         return self._status
     
     async def run(self):
+        log.info("task %s start" % self._name)
+        self._ticker.checkin()
         self._status = TaskStatus.REQUESTER
-        self._responser = self._requester.request()
-        if self._responser.status() == 200:
+        self._responser = await self._requester.request()
+        delta = self._ticker.checkout()
+        log.info("task [%s] get response, delta: %d ms" % (self._name, delta))
+        try:
             self._status = TaskStatus.PROCESSOR
-            self._dataitem = await self._processor.process(self._responser)
+            self._datamodel = await self._processor.process(self._responser)
+            delta = self._ticker.checkout()
+            log.info("task [%s] process data, delta: %d ms" % (self._name, delta))
             self._status = TaskStatus.EXPORTER
-            await self._exporter.export(self._dataitem)
+            await self._exporter.export(self._datamodel)
             self._status = TaskStatus.DONE
-        else:
+            delta = self._ticker.checkout()
+            log.info("task [%s] export data, delta: %d ms" % (self._name, delta))
+        except Exception as e:
+            log.warn("task [%s] failed, ex: %s" % (self._name, e))
             self._status = TaskStatus.FAILED
+        log.info("task %s end, with status: %s" % (self._name, self._status))
         return self._status

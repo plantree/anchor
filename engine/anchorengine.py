@@ -4,6 +4,8 @@ Anchor Engine
 schedule all tasks
 """
 import asyncio 
+from engine.logger import log
+from engine.task import *
 
 class AnchorEngine(object):
     """
@@ -30,4 +32,11 @@ class AnchorEngine(object):
         for item in self._tasks:
             tasks.append(item.run())
         loop.run_until_complete(asyncio.wait(tasks))
+        count = len(tasks)
+        success = 0
+        for item in self._tasks:
+            log.info(item.status())
+            if item.status() == TaskStatus.DONE:
+                success += 1
+        log.info("task done, total: %d, success: %d, rate: %f%%" % (count, success, success / count * 100))
         loop.close()

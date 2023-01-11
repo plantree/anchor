@@ -3,14 +3,13 @@ Processor
 
 Convert request to data item
 """
-import dataitem
-import responser
+import engine.responser as responser
 
 class Processor(object):
     """
     Base class for processor
     """
-    def __init__(self, name, responser):
+    def __init__(self, name):
         self._name = name + "-processor"
         self._input = responser 
     
@@ -21,6 +20,6 @@ class Processor(object):
         return self.name
     
     # should return a data item
-    async def process(self):
+    async def process(self, responser):
         raise NotImplementedError
     
