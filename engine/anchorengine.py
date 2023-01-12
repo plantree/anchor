@@ -40,3 +40,4 @@ class AnchorEngine(object):
                 success += 1
         log.info("task done, total: %d, success: %d, rate: %f%%" % (count, success, success / count * 100))
         loop.close()
+        return 0 if success == count else -1

@@ -16,7 +16,7 @@ class TecentCareerDataModel(DataModel):
     """
     def __init__(self):
         super().__init__("tecent-career")
-        technology = DataItem("data")
+        technology = DataItem("number")
         self.addDataItem(technology)
 
 class TecentCareerProcessor(Processor):
@@ -30,7 +30,7 @@ class TecentCareerProcessor(Processor):
         if responser.status() != 200:
             raise Exception("responser status is not 200")
         datamodel = TecentCareerDataModel()
-        datamodel['data'] = responser.json()['Data']
+        datamodel['number'] = responser.json()['Data']['Count']
         return datamodel
 
 class TecentCareerTask(Task):

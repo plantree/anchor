@@ -1,0 +1,36 @@
+name: 'crontab task'
+on: 
+  push:
+    branches:
+      - main
+  schedule:
+    # Beijing Time 01:00
+    - cron: '0 17 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8"]
+    steps:
+      - uses: actions/checkout@3
+      - name: Set up Python ${{matrix.python-version}}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{matrix.python-version}}
+          cache: 'pip'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Execute
+        run: python main.py
+      - name: Push
+        - uses: actions/checkout@v3
+        - run: |
+          today=`date +"%y-%m-%d"`
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "[${today}] done"
+          git push
+

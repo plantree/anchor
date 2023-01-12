@@ -42,5 +42,6 @@ if __name__ == '__main__':
     support_url = f"https://careers.tencent.com/tencentcareer/api/post/Query?timestamp={timestamp}&countryId=&cityId=&bgIds=&productId=&categoryId=&parentCategoryId=400010&attrId=&keyword=&pageIndex=1&pageSize=10000&language=zh-cn&area=cn"
     engine.addTask(TecentCareerTask(support_url, "tecent-career-support.json"))
 
-    engine.start()
+    status = engine.start()
     log.info("Anchor stopped")
+    exit(status)

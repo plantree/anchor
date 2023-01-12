@@ -2,6 +2,7 @@
 <p align="left">
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg"></a>
 </p>
+**Statement: data is for personal use only!!!**
 
 #### 0. Goal
 
@@ -26,7 +27,6 @@ Solve real problems by combing existing tools is what *anchor* will do.
 
 - GitHub Action
 - Python3
-  - 
 
 ##### 2.2 Architecture
 
