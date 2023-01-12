@@ -14,6 +14,7 @@ jobs:
       matrix:
         python-version: ["3.8"]
     steps:
+      - name: Checout code
       - uses: actions/checkout@3
       - name: Set up Python ${{matrix.python-version}}
         uses: actions/setup-python@v4
@@ -25,8 +26,8 @@ jobs:
       - name: Execute
         run: python main.py
       - name: Push
-        - uses: actions/checkout@v3
-        - run: |
+      - uses: actions/checkout@3
+      - run: |
           today=`date +"%y-%m-%d"`
           git config user.name github-actions
           git config user.email github-actions@github.com
