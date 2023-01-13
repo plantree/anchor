@@ -5,9 +5,13 @@ utils for engine
 """
 import random
 import time
+from datetime import datetime, timedelta, timezone
 
+# beijing timezone
 def get_today():
-    return time.strftime("%Y-%m-%d", time.localtime(time.time()))
+    utc_now = datetime.utcnow().replace(tzinfo=timezone.utc)
+    bj_now = utc_now.astimezone(timezone(timedelta(hours=8)))
+    return bj_now.strftime("%Y-%m-%d")
 
 def get_user_agent():
     UserAgents = [
@@ -51,3 +55,6 @@ def get_user_agent():
     userAgent = random.choice(UserAgents)
     return userAgent
 
+if __name__ == '__main__':
+    today = get_today()
+    print(today)
