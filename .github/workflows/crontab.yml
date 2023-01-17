@@ -24,7 +24,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pytest-playwright
-          playwright install chrome
+          playwright install chromium
           playwright install-deps
       - name: Execute
         run: python main.py
