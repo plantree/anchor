@@ -2,12 +2,14 @@
 from engine.anchorengine import AnchorEngine
 from engine.logger import log
 from task.tecent_career_task import *
+from task.baidu_career_task import *
 from datetime import datetime
 
 if __name__ == '__main__':
     log.debug("Anchor starting")
     engine = AnchorEngine()
     timestamp = datetime.now().timestamp()
+
     # task 1
     career_url = f"https://careers.tencent.com/tencentcareer/api/post/Query?timestamp={timestamp}&countryId=&cityId=&bgIds=&productId=&categoryId=&parentCategoryId=40001&attrId=&keyword=&pageIndex=1&pageSize=10000&language=zh-cn&area=cn"
     engine.addTask(TecentCareerTask(career_url, "tecent-career-technology.json"))
@@ -42,6 +44,10 @@ if __name__ == '__main__':
     support_url = f"https://careers.tencent.com/tencentcareer/api/post/Query?timestamp={timestamp}&countryId=&cityId=&bgIds=&productId=&categoryId=&parentCategoryId=400010&attrId=&keyword=&pageIndex=1&pageSize=10000&language=zh-cn&area=cn"
     engine.addTask(TecentCareerTask(support_url, "tecent-career-support.json"))
 
+    # task 12
+    baidu_career_url = "https://talent.baidu.com/jobs/social-list"
+    engine.addTask(BaiduCareerTask(baidu_career_url, "baidu-career.json"))
+    
     status = engine.start()
     log.info("Anchor stopped")
     exit(status)
