@@ -14,8 +14,8 @@ Currently running tasks:
 
 - [x] [Tencent Careers](https://careers.tencent.com/jobopportunity.html)
 - [x] [Baidu Careers](https://talent.baidu.com/jobs/social-list)
-- [ ] [ByteDance Careers](https://jobs.bytedance.com/experienced/position)
-- [ ] [Alibaba Careers](https://talent.alibaba.com/off-campus/position-list?lang=zh)
+- [x] [ByteDance Careers](https://jobs.bytedance.com/experienced/position)
+- [x] [Alibaba Careers](https://talent.alibaba.com/off-campus/position-list?lang=zh)
 
 #### 1. Why do this
 
