@@ -27,7 +27,11 @@ jobs:
           playwright install chromium
           playwright install-deps
       - name: Execute
-        run: python main.py
+        uses: nick-fields/retry@v2
+        with:
+          max_attempts: 3
+          retry_on: error
+          command: python main.py
       - name: Push
         run: |
           date "+%Y-%m-%d %H:%M:%S" >> actions.txt

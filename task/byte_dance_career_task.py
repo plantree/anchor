@@ -54,7 +54,7 @@ class ByteDanceCareerRequester(Requester):
             browser = await p.chromium.launch(headless=True)
             page = await browser.new_page()
             await page.goto(self._url)
-            await page.wait_for_load_state('domcontentloaded')
+            await page.wait_for_load_state('networkidle')
             categories = await page.query_selector_all('div.TreeFilterCategory li')
             for category in categories:
                 item = await category.inner_text()
@@ -68,7 +68,7 @@ class ByteDanceCareerRequester(Requester):
                     self._status = False
                 async with page.expect_response('https://jobs.bytedance.com/api/v1/search/job/posts*') as response_info:
                     await category.click()
-                await page.wait_for_load_state('domcontentloaded')
+                await page.wait_for_load_state('networkidle')
 
             await browser.close()
             log.info(self._data)
