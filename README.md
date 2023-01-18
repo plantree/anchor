@@ -4,7 +4,7 @@
 <a href="https://github.com/plantree/anchor/actions/workflows/crontab.yml"><img src="https://github.com/plantree/anchor/actions/workflows/crontab.yml/badge.svg"></a>
 </p>
 
-**Statement: data is for personal use only!!!**
+> **Statement: data is for personal use only!!!**
 
 #### 0. Goal
 
@@ -12,8 +12,10 @@ Anchor some data in the web and automatically save periodically.
 
 Currently running tasks:
 
-- [Tencent Careers](https://careers.tencent.com/jobopportunity.html)
-- 
+- [x] [Tencent Careers](https://careers.tencent.com/jobopportunity.html)
+- [x] [Baidu Careers](https://talent.baidu.com/jobs/social-list)
+- [ ] [ByteDance Careers](https://jobs.bytedance.com/experienced/position)
+- [ ] [Alibaba Careers](https://talent.alibaba.com/off-campus/position-list?lang=zh)
 
 #### 1. Why do this
 
@@ -56,6 +58,15 @@ stateDiagram
 - **Exporter**: deal with *DataItem*, like saving to `.json` file or exporting to DB, etc.
 - **Task**: a task scheduled by *Anchor Engine*
 - **Anchor Engine**: asynchronous style task handler
+
+#### Changelogs
+
+##### 0.9.2 (2023-01-18)
+
+###### Feature
+
+1. basic functions completed
+2. add tencent-career-task and baidu-career-task
 
 #### Reference:
 

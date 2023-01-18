@@ -3,6 +3,8 @@ from engine.anchorengine import AnchorEngine
 from engine.logger import log
 from task.tecent_career_task import *
 from task.baidu_career_task import *
+from task.alibaba_career_task import *
+from task.byte_dance_career_task import *
 from datetime import datetime
 
 if __name__ == '__main__':
@@ -47,6 +49,14 @@ if __name__ == '__main__':
     # task 12
     baidu_career_url = "https://talent.baidu.com/jobs/social-list"
     engine.addTask(BaiduCareerTask(baidu_career_url, "baidu-career.json"))
+
+    # task 13
+    alibaba_career_url = "https://talent.alibaba.com/off-campus/position-list?lang=zh"
+    engine.addTask(AlibabaCareerTask(alibaba_career_url, "alibaba-career.json"))
+
+    # task 14
+    byte_dance_career_url = "https://jobs.bytedance.com/experienced/position"
+    engine.addTask(ByteDanceCareerTask(byte_dance_career_url, "byte-dance-career.json"))
     
     status = engine.start()
     log.info("Anchor stopped")
