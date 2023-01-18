@@ -29,6 +29,7 @@ jobs:
       - name: Execute
         uses: nick-fields/retry@v2
         with:
+          timeout_minutes: 10
           max_attempts: 3
           retry_on: error
           command: python main.py
