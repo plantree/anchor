@@ -29,9 +29,13 @@ class AnchorEngine(object):
         self._running = True
         loop = asyncio.get_event_loop()
         tasks = []
+        # add id to task
+        id = 0
         for item in self._tasks:
-            tasks.append(item.run())
+            tasks.append(item.run(id))
+            id += 1
         loop.run_until_complete(asyncio.wait(tasks))
+        # summary
         count = len(tasks)
         success = 0
         for item in self._tasks:

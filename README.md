@@ -3,8 +3,9 @@
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg"></a>
 <a href="https://github.com/plantree/anchor/actions/workflows/crontab.yml"><img src="https://github.com/plantree/anchor/actions/workflows/crontab.yml/badge.svg"></a>
 </p>
-
-> **Statement: data is for personal use only!!!**
+::: warning 
+STATEMENT: data is for personal use only!!!
+:::
 
 #### 0. Goal
 
@@ -16,6 +17,12 @@ Currently running tasks:
 - [x] [Baidu Careers](https://talent.baidu.com/jobs/social-list)
 - [x] [ByteDance Careers](https://jobs.bytedance.com/experienced/position)
 - [x] [Alibaba Careers](https://talent.alibaba.com/off-campus/position-list?lang=zh)
+- [ ] [JD Careers](https://zhaopin.jd.com/web/job/job_info_list/3)
+- [ ] [Bilibili Careers](https://jobs.bilibili.com/social/positions)
+- [ ] [Meituan Careers](https://zhaopin.jd.com/web/job/job_info_list/3)
+- [ ] [NetEase Careers](https://hr.163.com/job-list.html?workType=0)
+- [ ] [PDD Careers](https://careers.pinduoduo.com/jobs)
+- [ ] [360 Careers](http://hr.360.cn/hr/list)
 
 #### 1. Why do this
 
@@ -61,7 +68,14 @@ stateDiagram
 
 #### Changelogs
 
-##### 0.9.2 (2023-01-18)
+##### 0.9.3 (2023-01-18)
+
+###### Feature
+
+1. add alibaba-career-task and byte-dance-career-task
+2. add retry to GitHub Action
+
+##### 0.9.2 (2023-01-17)
 
 ###### Feature
 

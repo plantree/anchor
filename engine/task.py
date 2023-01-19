@@ -40,25 +40,25 @@ class Task(object):
     def status(self):
         return self._status
     
-    async def run(self):
-        log.info("task %s start" % self._name)
+    async def run(self, id):
+        log.info("[%d] task %s start" % (id, self._name))
         self._ticker.checkin()
         self._status = TaskStatus.REQUESTER
         self._responser = await self._requester.request()
         delta = self._ticker.checkout()
-        log.info("task [%s] get response, delta: %d ms" % (self._name, delta))
+        log.info("[%d] task [%s] get response, delta: %d ms" % (id, self._name, delta))
         try:
             self._status = TaskStatus.PROCESSOR
             self._datamodel = await self._processor.process(self._responser)
             delta = self._ticker.checkout()
-            log.info("task [%s] process data, delta: %d ms" % (self._name, delta))
+            log.info("[%d] task [%s] process data, delta: %d ms" % (id, self._name, delta))
             self._status = TaskStatus.EXPORTER
             await self._exporter.export(self._datamodel)
             self._status = TaskStatus.DONE
             delta = self._ticker.checkout()
-            log.info("task [%s] export data, delta: %d ms" % (self._name, delta))
+            log.info("[%d] task [%s] export data, delta: %d ms" % (id, self._name, delta))
         except Exception as e:
-            log.warn("task [%s] failed, ex: %s" % (self._name, e))
+            log.warn("[%d] task [%s] failed, ex: %s" % (id, self._name, e))
             self._status = TaskStatus.FAILED
-        log.info("task %s end, with status: %s" % (self._name, self._status))
+        log.info("[%d] task %s end, with status: %s" % (id, self._name, self._status))
         return self._status

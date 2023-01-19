@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 from engine.anchorengine import AnchorEngine
 from engine.logger import log
+from datetime import datetime
 from task.tecent_career_task import *
 from task.baidu_career_task import *
 from task.alibaba_career_task import *
 from task.byte_dance_career_task import *
-from datetime import datetime
+from task.jd_career_task import *
 
 if __name__ == '__main__':
     log.debug("Anchor starting")
@@ -58,6 +59,10 @@ if __name__ == '__main__':
     byte_dance_career_url = "https://jobs.bytedance.com/experienced/position"
     engine.addTask(ByteDanceCareerTask(byte_dance_career_url, "byte-dance-career.json"))
     
+    # task 15
+    jd_career_url = "https://zhaopin.jd.com/web/job/job_info_list/3"
+    engine.addTask(JDCarerrTask(jd_career_url, "jd-career.json"))
+
     status = engine.start()
     log.info("Anchor stopped")
     exit(status)
