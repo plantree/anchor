@@ -7,6 +7,8 @@ from task.baidu_career_task import *
 from task.alibaba_career_task import *
 from task.byte_dance_career_task import *
 from task.jd_career_task import *
+from task.bilibili_career_task import *
+from task.meituan_career_task import *
 
 if __name__ == '__main__':
     log.debug("Anchor starting")
@@ -62,6 +64,14 @@ if __name__ == '__main__':
     # task 15
     jd_career_url = "https://zhaopin.jd.com/web/job/job_info_list/3"
     engine.addTask(JDCarerrTask(jd_career_url, "jd-career.json"))
+
+    # task 16 
+    bilibili_career_url = "https://jobs.bilibili.com/social/positions?type=3"
+    engine.addTask(BilibiliCareerTask(bilibili_career_url, "bilibili-career.json"))
+
+    # task 17
+    meituan_career_url = 'https://zhaopin.meituan.com/web/social'
+    engine.addTask(MeituanCareerTask(meituan_career_url, "meituan-career.json"))
 
     status = engine.start()
     log.info("Anchor stopped")

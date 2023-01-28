@@ -1,5 +1,5 @@
 """
-JD carer task
+JD career task
 
 based on playwright
 """
