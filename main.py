@@ -9,6 +9,9 @@ from task.byte_dance_career_task import *
 from task.jd_career_task import *
 from task.bilibili_career_task import *
 from task.meituan_career_task import *
+from task.netease_career_task import *
+from task.pdd_career_task import *
+from task.three_six_zero_career_task import *
 
 if __name__ == '__main__':
     log.debug("Anchor starting")
@@ -72,6 +75,18 @@ if __name__ == '__main__':
     # task 17
     meituan_career_url = 'https://zhaopin.meituan.com/web/social'
     engine.addTask(MeituanCareerTask(meituan_career_url, "meituan-career.json"))
+
+    # task 18
+    netease_career_url = 'https://hr.163.com/job-list.html?workType=0'
+    engine.addTask(NeteaseCareerTask(netease_career_url, "netease-career.json"))
+
+    # task 19
+    pdd_career_url = 'https://careers.pinduoduo.com/jobs'
+    engine.addTask(PddCareerTask(pdd_career_url, "pdd-career.json"))
+
+    # task 20
+    three_six_zero_career_url = 'http://hr.360.cn/hr/list'
+    engine.addTask(ThreeSixZeroCareerTask(three_six_zero_career_url, "360-career.json"))
 
     status = engine.start()
     log.info("Anchor stopped")

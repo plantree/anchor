@@ -19,10 +19,10 @@ Currently running tasks:
 - [x] [Alibaba Careers](https://talent.alibaba.com/off-campus/position-list?lang=zh)
 - [x] [JD Careers](https://zhaopin.jd.com/web/job/job_info_list/3)
 - [x] [Bilibili Careers](https://jobs.bilibili.com/social/positions)
-- [ ] [Meituan Careers](https://zhaopin.jd.com/web/job/job_info_list/3)
-- [ ] [NetEase Careers](https://hr.163.com/job-list.html?workType=0)
-- [ ] [PDD Careers](https://careers.pinduoduo.com/jobs)
-- [ ] [360 Careers](http://hr.360.cn/hr/list)
+- [x] [Meituan Careers](https://zhaopin.jd.com/web/job/job_info_list/3)
+- [x] [NetEase Careers](https://hr.163.com/job-list.html?workType=0)
+- [x] [PDD Careers](https://careers.pinduoduo.com/jobs)
+- [x] [360 Careers](http://hr.360.cn/hr/list)
 
 #### 1. Why do this
 
@@ -67,6 +67,12 @@ stateDiagram
 - **Anchor Engine**: asynchronous style task handler
 
 #### Changelogs
+
+##### 0.9.4 (2023-01-30)
+
+###### Feature
+
+1. add jd, bilibili, meituan, netease, pdd, 360 career task
 
 ##### 0.9.3 (2023-01-18)
 
