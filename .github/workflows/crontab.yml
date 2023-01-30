@@ -25,6 +25,7 @@ jobs:
           pip install -r requirements.txt
           pip install pytest-playwright
           playwright install chromium
+          playwright install firefox
           playwright install-deps
       - name: Execute
         uses: nick-fields/retry@v2
