@@ -27,6 +27,7 @@ jobs:
           max_attempts: 3
           retry_on: error
           command: |
+            apt-get update
             pip install -r requirements.txt
             pip install pytest-playwright
             playwright install chromium
