@@ -48,7 +48,7 @@ class NeteaseCareerRequester(Requester):
         async with async_playwright() as p:
             browser = await p.firefox.launch(headless=True)
             page = await browser.new_page()
-            async with page.expect_response('https://hr.163.com/api/hr163/position/queryPage') as response_info:
+            async with page.expect_response('https://hr.163.com/api/hr163/position/queryPage', timeout=100000) as response_info:
                 await page.goto(self._url)
             response = await response_info.value
             if not response.ok:
@@ -64,7 +64,7 @@ class NeteaseCareerRequester(Requester):
                 name = await item.inner_text()
                 if name == '不限':
                     continue 
-                async with page.expect_response('https://hr.163.com/api/hr163/position/queryPage') as response_info:
+                async with page.expect_response('https://hr.163.com/api/hr163/position/queryPage', timeout=100000) as response_info:
                     await item.click()
                 response = await response_info.value
                 if not response.ok:

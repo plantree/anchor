@@ -49,7 +49,7 @@ class PddCareerRequester(Requester):
         async with async_playwright() as p:
             browser = await p.firefox.launch(headless=True)
             page = await browser.new_page()
-            async with page.expect_response('https://careers.pinduoduo.com/api/recruit/position/list') as response_info:
+            async with page.expect_response('https://careers.pinduoduo.com/api/recruit/position/list', timeout=100000) as response_info:
                 await page.goto(self._url)
             response = await response_info.value
             if not response.ok:
@@ -65,7 +65,7 @@ class PddCareerRequester(Requester):
                 name = await item.inner_text()
                 if name == '全部':
                     continue 
-                async with page.expect_response('https://careers.pinduoduo.com/api/recruit/position/list') as response_info:
+                async with page.expect_response('https://careers.pinduoduo.com/api/recruit/position/list', timeout=100000) as response_info:
                     await item.click()
                 response = await response_info.value
                 if not response.ok:
