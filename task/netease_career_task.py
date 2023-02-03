@@ -46,11 +46,8 @@ class NeteaseCareerRequester(Requester):
     
     async def request(self):
         async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=True)
+            browser = await p.webkit.launch(headless=True)
             page = await browser.new_page()
-            await page.goto(self._url)
-            content = await page.content()
-            print(content.title())
             async with page.expect_response('https://hr.163.com/api/hr163/position/queryPage', timeout=100000) as response_info:
                 await page.goto(self._url)
             response = await response_info.value
