@@ -57,8 +57,8 @@ if __name__ == '__main__':
     engine.addTask(BaiduCareerTask(baidu_career_url, "baidu-career.json"))
 
     # task 13
-    alibaba_career_url = "https://talent.alibaba.com/off-campus/position-list?lang=zh"
-    engine.addTask(AlibabaCareerTask(alibaba_career_url, "alibaba-career.json"))
+    # alibaba_career_url = "https://talent.alibaba.com/off-campus/position-list?lang=zh"
+    # engine.addTask(AlibabaCareerTask(alibaba_career_url, "alibaba-career.json"))
 
     # task 14
     byte_dance_career_url = "https://jobs.bytedance.com/experienced/position"
