@@ -49,7 +49,7 @@ class ThreeSixZeroCareerRequester(Requester):
         async with async_playwright() as p:
             browser = await p.firefox.launch(headless=True)
             page = await browser.new_page()
-            async with page.expect_response('http://hr.360.cn/v2/index/getlistsearch') as response_info:
+            async with page.expect_response('https://hr.360.cn/v2/index/getlistsearch') as response_info:
                 await page.goto(self._url)
             response = await response_info.value
             if not response.ok:
@@ -83,5 +83,5 @@ class ThreeSixZeroCareerTask(Task):
         super().__init__("360-career", requester, processor, exporter)
     
 if __name__ == '__main__':
-    requester = ThreeSixZeroCareerRequester("http://hr.360.cn/hr/list")
+    requester = ThreeSixZeroCareerRequester("https://hr.360.cn/hr/list")
     asyncio.get_event_loop().run_until_complete(requester.request())
