@@ -53,8 +53,8 @@ if __name__ == '__main__':
     engine.addTask(TecentCareerTask(support_url, "tecent-career-support.json"))
 
     # task 12
-    baidu_career_url = "https://talent.baidu.com/jobs/social-list"
-    engine.addTask(BaiduCareerTask(baidu_career_url, "baidu-career.json"))
+    # baidu_career_url = "https://talent.baidu.com/jobs/social-list"
+    # engine.addTask(BaiduCareerTask(baidu_career_url, "baidu-career.json"))
 
     # task 13
     # alibaba_career_url = "https://talent.alibaba.com/off-campus/position-list?lang=zh"
