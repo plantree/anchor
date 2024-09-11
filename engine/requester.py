@@ -35,7 +35,8 @@ class GetRequester(Requester):
         
     async def request(self):
         headers = {
-            'User-Agent': get_user_agent()
+            'User-Agent': get_user_agent(),
+            'Accept': 'application/json, text/plain, */*'
         }
         async with aiohttp.ClientSession() as session:
             async with session.get(self._url, headers=headers) as resp:
