@@ -19,8 +19,8 @@ if __name__ == '__main__':
     timestamp = datetime.now().timestamp()
 
     # task 1
-    career_url = f"https://careers.tencent.com/tencentcareer/api/post/Query?timestamp={timestamp}&countryId=&cityId=&bgIds=&productId=&categoryId=&parentCategoryId=40001&attrId=&keyword=&pageIndex=1&pageSize=10000&language=zh-cn&area=cn"
-    engine.addTask(TecentCareerTask(career_url, "tecent-career-technology.json"))
+    # career_url = f"https://careers.tencent.com/tencentcareer/api/post/Query?timestamp={timestamp}&countryId=&cityId=&bgIds=&productId=&categoryId=&parentCategoryId=40001&attrId=&keyword=&pageIndex=1&pageSize=10000&language=zh-cn&area=cn"
+    # engine.addTask(TecentCareerTask(career_url, "tecent-career-technology.json"))
     # task 2
     product_url = f"https://careers.tencent.com/tencentcareer/api/post/Query?timestamp={timestamp}&countryId=&cityId=&bgIds=&productId=&categoryId=&parentCategoryId=40003&attrId=&keyword=&pageIndex=1&pageSize=10000&language=zh-cn&area=cn"
     engine.addTask(TecentCareerTask(product_url, "tecent-career-product.json"))
